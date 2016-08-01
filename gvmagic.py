@@ -184,5 +184,11 @@ class GraphvizMagics(Magics):
                     display_svg(data, raw=True)
 
 
-ipy = get_ipython()
-ipy.register_magics(GraphvizMagics)
+def load_ipython_extension(ipython):
+    """Load the extension in IPython."""
+    ipython.register_magics(GraphvizMagics)
+
+
+def unload_ipython_extension(ipython):
+    """Unload the extension in IPython."""
+    pass
