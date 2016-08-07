@@ -17,12 +17,14 @@ Usage:
 
 
 from subprocess import Popen, PIPE
+
 from IPython.core.display import display_svg
-from IPython.core.magic import (
-    Magics, magics_class,
-    line_magic, line_cell_magic
-)
-from IPython.utils.warn import info, error
+from IPython.core.magic import Magics
+from IPython.core.magic import line_cell_magic
+from IPython.core.magic import line_magic
+from IPython.core.magic import magics_class
+from IPython.utils.warn import info
+from IPython.utils.warn import error
 
 
 def run_graphviz(s, layout_engine='dot'):
