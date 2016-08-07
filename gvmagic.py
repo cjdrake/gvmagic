@@ -141,7 +141,7 @@ class GraphvizMagics(Magics):
     def circoobjs(self, line):
         self._from_objs(line, 'circo')
 
-    def _from_cell(self, line, cell=None, layout_engine='dot'):
+    def _from_cell(self, line, cell, layout_engine):
         if cell is None:
             s = line
         else:
