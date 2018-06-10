@@ -25,7 +25,7 @@ from IPython.core.magic import line_cell_magic
 from IPython.core.magic import line_magic
 from IPython.core.magic import magics_class
 
-def show_svg(s, d):
+def show_svg(d):
     display(SVG(data=d))
 
 def run_graphviz(s, layout_engine='dot'):
