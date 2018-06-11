@@ -19,12 +19,14 @@ Usage:
 from logging import info, error
 from subprocess import Popen, PIPE
 
-from IPython.core.display import display_svg
+from IPython.display import display, SVG
 from IPython.core.magic import Magics
 from IPython.core.magic import line_cell_magic
 from IPython.core.magic import line_magic
 from IPython.core.magic import magics_class
 
+def show_svg(d):
+    display(SVG(data=d))
 
 def run_graphviz(s, layout_engine='dot'):
     """Execute dot with a layout and return a raw SVG image, or None."""
@@ -147,13 +149,13 @@ class GraphvizMagics(Magics):
             s = line + '\n' + cell
         data = run_graphviz(s, layout_engine)
         if data:
-            display_svg(data, raw=True)
+            show_svg(data)
 
     def _from_str(self, line, layout_engine):
         s = self.shell.ev(line)
         data = run_graphviz(s, layout_engine)
         if data:
-            display_svg(data, raw=True)
+            show_svg(data)
 
     def _from_obj(self, line, layout_engine):
         obj = self.shell.ev(line)
@@ -166,7 +168,7 @@ class GraphvizMagics(Magics):
         else:
             data = run_graphviz(s, layout_engine)
             if data:
-                display_svg(data, raw=True)
+                show_svg(data)
 
     def _from_objs(self, line, layout_engine):
         """dot objects magic"""
@@ -182,7 +184,7 @@ class GraphvizMagics(Magics):
                 data = run_graphviz(s, layout_engine)
                 if data:
                     info("object {}:".format(i))
-                    display_svg(data, raw=True)
+                    show_svg(data)
 
 
 def load_ipython_extension(ipython):
